@@ -1,0 +1,15 @@
+/build/
+/install/
+/log/
+/local_setup.*
+/install_setup.*
+*.pyc
+
+__pycache__/
+*.pyc
+
+CMakeLists.txt.user
+CMakeCache.txt
+build/
+CMakeFiles/
+Makefile
