@@ -3,6 +3,7 @@ from rclpy.node import Node
 from std_msgs.msg import Float32
 from std_srvs.srv import Empty
 from geometry_msgs.msg import Twist
+import copy
 
 MAX_LINEAR_VEL = 0.22
 MAX_ANGULAR_VEL = 2.84
@@ -30,7 +31,7 @@ class TeleopService(Node):
         super().__init__("teleop_service")
 
         self.current_speed = Twist()
-        self.last_speed = None
+        self.last_speed = Twist()
 
         self.linear_subscriber = self.create_subscription(
             Float32, "linear_speed", self.linear_callback, 10
@@ -81,7 +82,7 @@ class TeleopService(Node):
                         f"Linear speed: {self.current_speed.linear.x} | Angular speed: {self.current_speed.angular.z}"
                     )
                     self.cmd_vel_publisher.publish(self.current_speed)
-                    self.last_speed = self.current_speed
+                    self.last_speed = copy.deepcopy(self.current_speed)
 
                 rclpy.spin_once(self)
 
