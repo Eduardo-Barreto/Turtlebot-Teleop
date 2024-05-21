@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float32
-from std_srvs.srv import Empty
+from std_srvs.srv import Trigger
 from geometry_msgs.msg import Twist
 import copy
 
@@ -41,7 +41,9 @@ class TeleopService(Node):
         )
 
         self.is_killed = False
-        self.kill_service = self.create_service(Empty, "kill_robot", self.kill_callback)
+        self.kill_service = self.create_service(
+            Trigger, "kill_robot_service", self.kill_callback
+        )
 
         self.cmd_vel_publisher = self.create_publisher(Twist, "/cmd_vel", 10)
 

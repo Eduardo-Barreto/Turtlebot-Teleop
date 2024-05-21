@@ -1,5 +1,6 @@
 import rclpy
 from std_msgs.msg import Float32
+from std_srvs.srv import Trigger
 import sys
 import termios
 import tty
@@ -25,6 +26,7 @@ def main():
 
     linear_publisher = node.create_publisher(Float32, "linear_speed", 10)
     angular_publisher = node.create_publisher(Float32, "angular_speed", 10)
+    kill_client = node.create_client(Trigger, "kill_robot_service")
 
     print(
         "Use 'w' to move forward, 's' to move backward, 'a' to turn left, 'd' to turn right, 'q' to quit"
@@ -46,8 +48,12 @@ def main():
 
         linear_publisher.publish(linear_speed)
         angular_publisher.publish(angular_speed)
-        print(f"\rLinear speed: {linear_speed.data} | Angular speed: {angular_speed.data}")
+        print(
+            f"\rLinear speed: {linear_speed.data} | Angular speed: {angular_speed.data}"
+        )
 
+    request = Trigger.Request()
+    kill_client.call_async(request)
     node.destroy_node()
     rclpy.shutdown()
     termios.tcsetattr(sys.stdin, termios.TCSADRAIN, termios.tcgetattr(sys.stdin))
