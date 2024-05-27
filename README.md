@@ -29,4 +29,7 @@ E então, abra o arquivo `src/frontend/index.html` no seu navegador.
 
 # Demonstração
 
-https://github.com/Eduardo-Barreto/Turtlebot-Teleop/assets/34964398/113cacef-4fc1-4552-821a-e641bc5e94ce
+https://github.com/Eduardo-Barreto/Turtlebot-Teleop/assets/34964398/9b7f6062-e4e1-4845-b3cf-915184aad3cd
+
+> Nessa demonstração a câmera usada foi a webcam do notebook, pois o ambiente de simulação não possui uma câmera.
+
