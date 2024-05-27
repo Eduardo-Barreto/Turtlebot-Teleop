@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROS2 Camera Stream</title>
+  <script src="https://cdn.jsdelivr.net/npm/eventemitter2@6.4.9/lib/eventemitter2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/roslib@1/build/roslib.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">ROS2 Camera Stream</h1>
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <img id="cameraStream" width="640" height="480" />
+            <p id="latency">Latency: Calculating...</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="fixed-grid has-3-cols" style="width: 15%;">
+            <div class="grid">
+              <div class="cell is-col-start-2 is-col-span-2">
+                <div class="button is-large is-primary" id="btnW">W</div>
+              </div>
+              <div class="cell">
+                <div class="button is-large is-primary" id="btnA">A</div>
+              </div>
+              <div class="cell">
+                <div class="button is-large is-primary" id="btnS">S</div>
+              </div>
+              <div class="cell">
+                <div class="button is-large is-primary" id="btnD">D</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="ros_connection.js"></script>
+</body>
+
+</html>
